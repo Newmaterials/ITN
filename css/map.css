@@ -134,11 +134,12 @@
 #map .totalTouchPoints h1 {
 	color: #CD1D27;
 	font-family: 'bebas-neue', Helvetica, Arial, Verdana, sans-serif;
-	font-size: 17px;
+	font-size: 13px;
 	font-weight: normal;
 	height: 19px;
 	margin: 0;
 	padding: 0;
+	letter-spacing: 1px;
 	/*border: 1px solid #f00;*/
 	/*// this.context.fillText('ITN TOUCH TO DATE', 20, 240);*/
 }
@@ -149,10 +150,10 @@
 	margin: 0;
 	padding: 0;
 	color: #768065;
-	font-family: 'bebas-neue', Helvetica, Arial, Verdana, sans-serif;
-	font-size: 32px;
-	font-weight: normal;
-	letter-spacing: 2px;
+	font-family: Helvetica, Arial, Verdana, sans-serif;
+	font-size: 26px;
+	font-weight: bold;
+	letter-spacing: 1px;
 	/*border: 1px solid #f00;*/
 	/*// this.context.fillText('021,098,096', 20, 265);*/
 }

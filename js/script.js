@@ -135,13 +135,34 @@ var monthHead = [],
 			var fontSize = Math.floor( (root.eventData.TotalTouchPoints / root.maximumTotalPoints) * 3);
 			switch(fontSize) {
 				case 0:
-					fontSize = 10;
+					fontSize = 12;
 					break;
 				case 1:
-					fontSize = 20;
+					fontSize = 15;
 					break;
 				case 2:
-					fontSize = 40;
+					fontSize = 17;
+					break;
+				case 3:
+					fontSize = 20;
+					break;
+				case 4:
+					fontSize = 22;
+					break;
+				case 5:
+					fontSize = 25;
+					break;
+				case 6:
+					fontSize = 27;
+					break;
+				case 7:
+					fontSize = 30;
+					break;
+				case 8:
+					fontSize = 32;
+					break;
+				case 9:
+					fontSize = 37;
 					break;
 			};
 
