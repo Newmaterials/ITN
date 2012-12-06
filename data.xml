@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EventCounts xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://bcard.net/">
+  <Event>
+    <EventId>1165</EventId>
+    <ShowName>TelcoTV 2012</ShowName>
+    <LocationName>Las Vegas, CA, US</LocationName>
+    <LocationX>118</LocationX>
+    <LocationY>326</LocationY>
+    <BadgesPrinted>2134</BadgesPrinted>
+    <SessionScans>1776</SessionScans>
+    <LeadScans>4816</LeadScans>
+    <TotalTouchPoints>8726</TotalTouchPoints>
+  </Event>
+  <Event>
+    <EventId>1324</EventId>
+    <ShowName>AnyShow 2012</ShowName>
+    <LocationName>Barcelona, SP</LocationName>
+    <LocationX>527</LocationX>
+    <LocationY>183</LocationY>
+    <BadgesPrinted>22629</BadgesPrinted>
+    <SessionScans>18311</SessionScans>
+    <LeadScans>48926</LeadScans>
+    <TotalTouchPoints>89866</TotalTouchPoints>
+  </Event>
+</EventCounts>

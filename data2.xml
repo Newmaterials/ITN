@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EventCounts xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://bcard.net/">
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Los Angeles, CA, US</LocationName>
+        <LocationX>216</LocationX>
+        <LocationY>178</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>2</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+        <Event>
+        <EventId>1165</EventId>
+        <ShowName>TelcoTV 2012</ShowName>
+        <LocationName>Las Vegas, CA, US</LocationName>
+        <LocationX>225</LocationX>
+        <LocationY>173</LocationY>
+        <BadgesPrinted>2134</BadgesPrinted>
+        <SessionScans>1776</SessionScans>
+        <LeadScans>4816</LeadScans>
+        <Month>1</Month>
+        <TotalTouchPoints>45000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>New York, NY, US</LocationName>
+        <LocationX>303</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>9</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>London, England</LocationName>
+        <LocationX>454</LocationX>
+        <LocationY>121</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>8</Month>
+        <TotalTouchPoints>89866</TotalTouchPoints>
+    </Event>
+     <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Barcelona, SP</LocationName>
+        <LocationX>453</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>11</Month>
+        <TotalTouchPoints>75000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Cape Town, South Africa</LocationName>
+        <LocationX>493</LocationX>
+        <LocationY>313</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>8</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Sydney, Australia</LocationName>
+        <LocationX>768</LocationX>
+        <LocationY>316</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>3</Month>
+        <TotalTouchPoints>60000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Los Angeles, CA, US</LocationName>
+        <LocationX>216</LocationX>
+        <LocationY>178</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>4</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+        <Event>
+        <EventId>1165</EventId>
+        <ShowName>TelcoTV 2012</ShowName>
+        <LocationName>Las Vegas, CA, US</LocationName>
+        <LocationX>225</LocationX>
+        <LocationY>173</LocationY>
+        <BadgesPrinted>2134</BadgesPrinted>
+        <SessionScans>1776</SessionScans>
+        <LeadScans>4816</LeadScans>
+        <Month>6</Month>
+        <TotalTouchPoints>45000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>New York, NY, US</LocationName>
+        <LocationX>303</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>10</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>London, England</LocationName>
+        <LocationX>454</LocationX>
+        <LocationY>121</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>9</Month>
+        <TotalTouchPoints>89866</TotalTouchPoints>
+    </Event>
+     <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Barcelona, SP</LocationName>
+        <LocationX>453</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>5</Month>
+        <TotalTouchPoints>75000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Cape Town, South Africa</LocationName>
+        <LocationX>493</LocationX>
+        <LocationY>313</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>5</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Sydney, Australia</LocationName>
+        <LocationX>768</LocationX>
+        <LocationY>316</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>8</Month>
+        <TotalTouchPoints>60000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Los Angeles, CA, US</LocationName>
+        <LocationX>216</LocationX>
+        <LocationY>178</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>4</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+        <Event>
+        <EventId>1165</EventId>
+        <ShowName>TelcoTV 2012</ShowName>
+        <LocationName>Las Vegas, CA, US</LocationName>
+        <LocationX>225</LocationX>
+        <LocationY>173</LocationY>
+        <BadgesPrinted>2134</BadgesPrinted>
+        <SessionScans>1776</SessionScans>
+        <LeadScans>4816</LeadScans>
+        <Month>1</Month>
+        <TotalTouchPoints>45000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>New York, NY, US</LocationName>
+        <LocationX>303</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>4</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>London, England</LocationName>
+        <LocationX>454</LocationX>
+        <LocationY>121</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>10</Month>
+        <TotalTouchPoints>89866</TotalTouchPoints>
+    </Event>
+     <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Barcelona, SP</LocationName>
+        <LocationX>453</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>2</Month>
+        <TotalTouchPoints>75000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Cape Town, South Africa</LocationName>
+        <LocationX>493</LocationX>
+        <LocationY>313</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>3</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Sydney, Australia</LocationName>
+        <LocationX>768</LocationX>
+        <LocationY>316</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>7</Month>
+        <TotalTouchPoints>60000</TotalTouchPoints>
+    </Event>
+
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Los Angeles, CA, US</LocationName>
+        <LocationX>216</LocationX>
+        <LocationY>178</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>8</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+        <Event>
+        <EventId>1165</EventId>
+        <ShowName>TelcoTV 2012</ShowName>
+        <LocationName>Las Vegas, CA, US</LocationName>
+        <LocationX>225</LocationX>
+        <LocationY>173</LocationY>
+        <BadgesPrinted>2134</BadgesPrinted>
+        <SessionScans>1776</SessionScans>
+        <LeadScans>4816</LeadScans>
+        <Month>12</Month>
+        <TotalTouchPoints>45000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>New York, NY, US</LocationName>
+        <LocationX>303</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>7</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>London, England</LocationName>
+        <LocationX>454</LocationX>
+        <LocationY>121</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>6</Month>
+        <TotalTouchPoints>89866</TotalTouchPoints>
+    </Event>
+     <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Barcelona, SP</LocationName>
+        <LocationX>453</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>9</Month>
+        <TotalTouchPoints>75000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Cape Town, South Africa</LocationName>
+        <LocationX>493</LocationX>
+        <LocationY>313</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>2</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Sydney, Australia</LocationName>
+        <LocationX>768</LocationX>
+        <LocationY>316</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>5</Month>
+        <TotalTouchPoints>60000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Los Angeles, CA, US</LocationName>
+        <LocationX>216</LocationX>
+        <LocationY>178</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>11</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+        <Event>
+        <EventId>1165</EventId>
+        <ShowName>TelcoTV 2012</ShowName>
+        <LocationName>Las Vegas, CA, US</LocationName>
+        <LocationX>225</LocationX>
+        <LocationY>173</LocationY>
+        <BadgesPrinted>2134</BadgesPrinted>
+        <SessionScans>1776</SessionScans>
+        <LeadScans>4816</LeadScans>
+        <Month>10</Month>
+        <TotalTouchPoints>45000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>New York, NY, US</LocationName>
+        <LocationX>303</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>4</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>London, England</LocationName>
+        <LocationX>454</LocationX>
+        <LocationY>121</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>5</Month>
+        <TotalTouchPoints>89866</TotalTouchPoints>
+    </Event>
+     <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Barcelona, SP</LocationName>
+        <LocationX>453</LocationX>
+        <LocationY>149</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>6</Month>
+        <TotalTouchPoints>75000</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Cape Town, South Africa</LocationName>
+        <LocationX>493</LocationX>
+        <LocationY>313</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>8</Month>
+        <TotalTouchPoints>0</TotalTouchPoints>
+    </Event>
+    <Event>
+        <EventId>1324</EventId>
+        <ShowName>AnyShow 2012</ShowName>
+        <LocationName>Sydney, Australia</LocationName>
+        <LocationX>768</LocationX>
+        <LocationY>316</LocationY>
+        <BadgesPrinted>22629</BadgesPrinted>
+        <SessionScans>18311</SessionScans>
+        <LeadScans>48926</LeadScans>
+        <Month>9</Month>
+        <TotalTouchPoints>60000</TotalTouchPoints>
+    </Event>
+</EventCounts>
