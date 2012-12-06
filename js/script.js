@@ -49,7 +49,7 @@ var monthHead = [],
 		
 		this.context = ctx;
 		this.maximumTotalPoints = 100000;
-		this.numBreakPoints = 33;
+		this.numBreakPoints = 10;
 		this.alphaVal = 0;
 		this.destroying = false;
 		this.canBeDestroyed = false;
