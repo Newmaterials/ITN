@@ -111,7 +111,6 @@ var monthHead = [],
 		
 		this.draw = function(otherMarkers) {
 			root.context.globalAlpha = root.getAlphaVal();
-
 			
 			if(root.context.globalAlpha == 0 && root.destroying) {
 				root.canBeDestroyed = true;
@@ -147,12 +146,15 @@ var monthHead = [],
 
 			root.context.textAlign = 'left';
 			root.context.fillStyle = '#CD1D27'; 
+			// root.context.font = "bold "+ fontSize +"px 'HelveticaNeueW01-77BdCn 692722', HelveticaNeue, Helvetica, Arial, Verdana, sans-serif";
 			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
 			// Remove everything that is not just the city name from LocationName
 			var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
 				textXLocation = parseInt(root.eventData.LocationX) + 10,
 				textYLocation = parseInt(root.eventData.LocationY) + (fontSize/2),
 				textSize = root.context.measureText(locationName);
+
+				// rasterizeHTML.drawHTML('Some <h1>HTML</h1> ', document.getElementById('RFIDMap'));
 
 			if( textSize.width + textXLocation > root.context.canvas.width ) {
 				textXLocation -= textSize.width + 20;
