@@ -20,7 +20,7 @@
 	padding-top: 10px;
 	overflow: hidden;
 
-	font-family: 'HelveticaNeueW01-77BdCn 692722', HelveticaNeue, Helvetica, Arial, Verdana, sans-serif;
+	font-family: 'bebas-neue', Helvetica, Arial, Verdana, sans-serif;
 	font-weight: normal;
 
 	z-index: 9999;
@@ -44,7 +44,7 @@
 	padding: 5px 0;
 	margin: 0;
 	
-	font-size: 10px;
+	font-size: 13px;
 	text-align: center;
 	text-transform: uppercase;
 	list-style-type: none;
@@ -133,10 +133,10 @@
 
 #map .totalTouchPoints h1 {
 	color: #CD1D27;
-	font-family: 'HelveticaNeueW01-77BdCn 692722', HelveticaNeue, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 10px;
+	font-family: 'bebas-neue', Helvetica, Arial, Verdana, sans-serif;
+	font-size: 17px;
 	font-weight: normal;
-	height: 15px;
+	height: 19px;
 	margin: 0;
 	padding: 0;
 	/*border: 1px solid #f00;*/
@@ -149,8 +149,8 @@
 	margin: 0;
 	padding: 0;
 	color: #768065;
-	font-family: 'HelveticaNeueW01-77BdCn 692722', HelveticaNeue, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 27px;
+	font-family: 'bebas-neue', Helvetica, Arial, Verdana, sans-serif;
+	font-size: 32px;
 	font-weight: normal;
 	letter-spacing: 2px;
 	/*border: 1px solid #f00;*/

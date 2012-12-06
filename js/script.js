@@ -147,7 +147,7 @@ var monthHead = [],
 
 			root.context.textAlign = 'left';
 			root.context.fillStyle = '#CD1D27'; 
-			root.context.font = "bold "+ fontSize +"px 'HelveticaNeueW01-77BdCn 692722', HelveticaNeue, Helvetica, Arial, Verdana, sans-serif";
+			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
 			// Remove everything that is not just the city name from LocationName
 			var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
 				textXLocation = parseInt(root.eventData.LocationX) + 10,
