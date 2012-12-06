@@ -95,6 +95,7 @@ var monthHead = [],
 
 			// SCALING FROM -1 to 1
 			var alpha = ((currentOffset - (offsetLocation - offsetRange) ) / (offsetRange*2)) * 2 - 1;
+			// console.log('alpha: ', alpha);
 			
 			// LIMITS ARE -1 to 1
 			if(alpha > 1) {
@@ -275,6 +276,28 @@ var monthHead = [],
 	// CONTROLS
 	var currentMonth = new Date().getMonth();
 	
+	var changeMonthDisplay = function(positionLeft){
+		var scrollPositionLeft = positionLeft + $('#mapControls .scrollArea .scrollBar .scrollHandle').position().left;
+
+		$.each($('#mapControls .months li'), function(i,month) {
+			if(scrollPositionLeft > $(this).position().left && scrollPositionLeft < ($(this).position().left + $(this).width()) ) {
+				if( !$(this).hasClass('selectedMonth') ) {
+					$('#mapControls .months li').removeClass('selectedMonth');
+					$('#mapControls .months li').removeClass('adjacentSelectedMonth');
+					$('#mapControls .months li').removeClass('farAdjacentSelectedMonth');
+
+					$(this).addClass('selectedMonth');
+					$(this).prev('li').addClass('adjacentSelectedMonth');
+					$(this).next('li').addClass('adjacentSelectedMonth');	
+				}
+				
+			}
+		});
+
+		
+	};
+
+
 	$( "#mapControls .scrollArea .scrollBar" ).draggable({ 
 		axis: "x", 
 		cursor: "move",
@@ -286,6 +309,8 @@ var monthHead = [],
 			else if(ui.position.left > -17) {
 				ui.position.left = -17;
 			}
+
+			changeMonthDisplay(ui.position.left);
 		} });
 	
 
