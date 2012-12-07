@@ -1,15 +1,13 @@
 <?php
-	$service = .($_GET['service']);
+	$service = ($_GET['service']);
 
-	/*if($service == "months"){
-		*/
+	if($service == "months"){
 		$urlWithSearchTerm = "http://www.bcard.net/services/itninttools.asmx/FetchStats?";	
-	
-	/*}
+	}
 	else {
 		$urlWithSearchTerm = "http://www.bcard.net/services/itninttools.asmx/CurrentCount?";
 	}
-	*/
+	
 	
 
 	

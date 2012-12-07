@@ -43,6 +43,14 @@ var monthHead = [],
 	image.src = 'img/marker.svg';
 
 
+	var monthFromString = function(s) {
+	  var bits = s.split(/[-T:]/g);
+	  // var d = new Date(bits[0], bits[1]-1, bits[2]);
+	  // d.setHours(bits[3], bits[4], bits[5]);
+	  return bits[1];
+	  // return d;
+	}
+
 	// Marker class
 	var RFIDMarker = function(eventToLoad, ctx) {
 		var root = this;
@@ -269,19 +277,32 @@ var monthHead = [],
 
 	RFIDMap.prototype.loadData = function(month) {
 		var root = this,
-			dataURL = 'itndata.xml';
+			// dataURL = 'itndata.xml';
+			// http://www.bcard.net/services/itninttools.asmx/FetchStats?
+			dataURL = 'serviceWrapper.php?service=months';
 			root.markers = [];
 			
-			if(TESTSwitch) {
-				dataURL = 'data2.xml';
-			}
+			// if(TESTSwitch) {
+			// 	dataURL = 'data2.xml';
+			// }
 
 		$.get(dataURL, function(data){
-			var loadedEvents = $.xml2json(data).Event;
+			var loadedEvents = $.xml2json(data).EventCount;
 
 			for(var i=0; i<loadedEvents.length; i++) {
-				root.markers.push( new RFIDMarker(loadedEvents[i], root.context) ); 
+				loadedEvents[i].Month = monthFromString(loadedEvents[i].StartDate);
+
+				root.markers.push( new RFIDMarker(loadedEvents[i], root.context) );
+
 			}
+		});
+
+		// http://www.bcard.net/services/itninttools.asmx/CurrentCount?
+		dataURL = 'serviceWrapper.php?service=totalTouchPoints';
+		$.get(dataURL, function(data){
+			var totalTouchPoints = $.xml2json(data).toString();
+
+			$('.totalTouchPoints p').text(totalTouchPoints);
 		});
 	};
 
