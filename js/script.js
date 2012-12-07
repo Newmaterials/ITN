@@ -300,7 +300,7 @@ var monthHead = [],
 		// http://www.bcard.net/services/itninttools.asmx/CurrentCount?
 		dataURL = 'serviceWrapper.php?service=totalTouchPoints';
 		$.get(dataURL, function(data){
-			var totalTouchPoints = $.xml2json(data).toString();
+			var totalTouchPoints = $.xml2json(data).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 			$('.totalTouchPoints p').text(totalTouchPoints);
 		});
