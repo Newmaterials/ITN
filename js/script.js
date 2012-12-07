@@ -454,8 +454,6 @@ var monthHead = [],
 		$(this).addClass('selectedMonth');
 		$(this).prev('li').addClass('adjacentSelectedMonth');
 		$(this).next('li').addClass('adjacentSelectedMonth');
-		// $(this).prev('li').prev('li').addClass('farAdjacentSelectedMonth');
-		// $(this).next('li').next('li').addClass('farAdjacentSelectedMonth');
 
 		var positionLeft = $(this).position().left + 30 - $('#mapControls .scrollArea .scrollBar .scrollHandle').position().left;
 		$('#mapControls .scrollArea .scrollBar').animate( {left: positionLeft }, {duration: 500} );

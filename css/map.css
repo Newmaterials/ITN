@@ -141,6 +141,7 @@
 	margin: 0;
 	padding: 0;
 	letter-spacing: 1px;
+	width: 140px;
 	/*border: 1px solid #f00;*/
 	/*// this.context.fillText('ITN TOUCH TO DATE', 20, 240);*/
 }
