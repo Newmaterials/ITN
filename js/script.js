@@ -66,7 +66,7 @@ var monthHead = [],
 		this.monthOffset = 0;
 
 		this.drawMarkerText = function(fontSize) {
-			var letterSpacing = 1.25;
+			var letterSpacing = 1;
 			root.context.textAlign = 'left';
 			root.context.fillStyle = '#CD1D27'; 
 			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
