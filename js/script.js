@@ -110,17 +110,12 @@ var monthHead = [],
 			// }
 
 			// Letter spacing hack
-			    
 	        var characters = String.split(locationName, ''),
 	            index = 0,
 	            current,
 	            currentPosition = textXLocation,
 	            align = 1;
 	        
-	        // if (root.context.textAlign === 'right') {
-	        //     characters = characters.reverse();
-	        //     align = -1;
-	        // } else if (root.context.textAlign === 'center') {
             var totalWidth = 0;
 
             for (var i = 0; i < characters.length; i++) {
@@ -128,7 +123,6 @@ var monthHead = [],
             }
             
             currentPosition = textXLocation - (totalWidth / 2);
-	        // }
 	        
 	        while (index < locationName.length) {
 	            current = characters[index++];
@@ -254,38 +248,6 @@ var monthHead = [],
 
 			root.drawMarkerText(fontSize);
 
-			// root.context.textAlign = 'left';
-			// root.context.fillStyle = '#CD1D27'; 
-			// root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
-			
-			// // Remove everything that is not just the city name from LocationName
-			// var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
-			// 	textXLocation = parseInt(root.eventData.LocationX) + 10,
-			// 	textYLocation = parseInt(root.eventData.LocationY) + (fontSize/2),
-			// 	textSize = root.context.measureText(locationName);
-
-			// if( textSize.width + textXLocation > root.context.canvas.width ) {
-			// 	textXLocation -= textSize.width + 20;
-			// }
-
-			// for(var i=0; i<otherMarkers.length; i++) {
-			// 	var markerVerticalDistance = parseInt(root.eventData.LocationY) - parseInt(otherMarkers[i].eventData.LocationY),
-			// 		markerHorizontalDistance = parseInt(root.eventData.LocationX) - parseInt(otherMarkers[i].eventData.LocationX);
-
-			// 	if(Math.abs(markerVerticalDistance) < 20 && Math.abs(markerHorizontalDistance) < 50) {
-			// 		textXLocation -= textSize.width + 20;
-
-			// 		if(markerVerticalDistance > 0) {
-			// 			textYLocation -= 10;
-			// 		}
-			// 		else {
-			// 			textYLocation += 10;
-			// 		}
-			// 	}
-			// }
-
-			// root.context.fillText(locationName, textXLocation, textYLocation);
-			// root.context.globalAlpha = 1;
 		};
 
 	};
@@ -374,11 +336,11 @@ var monthHead = [],
 
 
 	// CONTROLS
-	var currentMonth = new Date().getMonth();
 	
 	var changeMonthDisplay = function(positionLeft){
 		var scrollPositionLeft = positionLeft + $('#mapControls .scrollArea .scrollBar .scrollHandle').position().left;
 
+		// Add selected month class (and adjacent months) dependent on the location of the scrollbar
 		$.each($('#mapControls .months li'), function(i,month) {
 			if(scrollPositionLeft > $(this).position().left && scrollPositionLeft < ($(this).position().left + $(this).width()) ) {
 				if( !$(this).hasClass('selectedMonth') ) {
@@ -398,7 +360,6 @@ var monthHead = [],
 	$( "#mapControls .scrollArea .scrollBar" ).draggable({ 
 		axis: "x", 
 		cursor: "move",
-		// refreshPositions: true,
 		drag: function( event, ui ) {
 			if(ui.position.left < -$('#mapControls .scrollArea .scrollBar .scrollHandle').position().left + 30) {
 				ui.position.left = -$('#mapControls .scrollArea .scrollBar .scrollHandle').position().left + 30;
@@ -410,6 +371,9 @@ var monthHead = [],
 			changeMonthDisplay(ui.position.left);
 		} });
 	
+
+	// Display of months in the control area
+	var currentMonth = new Date().getMonth();
 
 	$('#mapControls .months li').each(function(i){	
 		var thisVal = $(this).val();
@@ -432,9 +396,7 @@ var monthHead = [],
 			// Add the current year at year crossings
 			var prevYear = new Date().getFullYear() - 1;
 			$('#mapControls .months').append('<p class="prevYear">' + prevYear + '</p>');
-			$('#mapControls .months .prevYear').css({left: $(this).position().left + 50});
 		}
-		
 	});
 
 	// Re-Order the months so 'NOW' is at the end.
@@ -445,6 +407,10 @@ var monthHead = [],
 	$('#mapControls .months li').each(function(i){
 		monthOrderMap[$(this).val()-1] = i;
 	});
+
+	// Position the previous year near the crossing AFTER it has been put in place (meaning, what happens above these lines)
+	$('#mapControls .months .prevYear').css({left: $('.endYear').position().left + 50});
+	console.log('posiiton: ', $('.endYear').position().left);
 
 	$('#mapControls .months li').click(function(){
 		$('#mapControls .months li').removeClass('selectedMonth');
