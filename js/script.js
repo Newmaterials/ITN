@@ -26,9 +26,6 @@
 }());
 
 
-//  FOR TESTING
-var TESTSwitch = false;
-
 // ITN RFID Drawing
 var monthHead = [],
 	monthOrderMap = [1,2,3,4,5,6,7,8,9,10,11,12];
@@ -45,10 +42,8 @@ var monthHead = [],
 
 	var monthFromString = function(s) {
 	  var bits = s.split(/[-T:]/g);
-	  // var d = new Date(bits[0], bits[1]-1, bits[2]);
-	  // d.setHours(bits[3], bits[4], bits[5]);
+
 	  return bits[1];
-	  // return d;
 	}
 
 	// Marker class
@@ -72,7 +67,7 @@ var monthHead = [],
 			// Now multiply by the number of pixels in each sprite to create proper offset amount.
 			var offsetSize = Math.floor( (numTouchPoints / root.maximumTotalPoints) * root.numBreakPoints) * imageWidth;
 			offsetSize += (imageWidth * 1);
-			// First image on the spritesheet are for special use
+			// First image on the spritesheet is for special use
 			return offsetSize;
 		};
 
@@ -97,13 +92,12 @@ var monthHead = [],
 		
 		this.getAlphaVal = function() {
 			var fadeSpeed = 0.1;
-			var offsetLocation = (monthOrderMap[root.eventData.Month-1]+1) * 60 + 31;
+			var offsetLocation = (monthOrderMap[root.eventData.Month-1]) * 60 + 31;
 			var offsetRange = 50;
 			var currentOffset = $('#mapControls .scrollArea .scrollBar').position().left + $('#mapControls .scrollArea .scrollBar .scrollHandle').position().left;
 
 			// SCALING FROM -1 to 1
 			var alpha = ((currentOffset - (offsetLocation - offsetRange) ) / (offsetRange*2)) * 2 - 1;
-			// console.log('alpha: ', alpha);
 			
 			// LIMITS ARE -1 to 1
 			if(alpha > 1) {
@@ -176,15 +170,13 @@ var monthHead = [],
 
 			root.context.textAlign = 'left';
 			root.context.fillStyle = '#CD1D27'; 
-			// root.context.font = "bold "+ fontSize +"px 'HelveticaNeueW01-77BdCn 692722', HelveticaNeue, Helvetica, Arial, Verdana, sans-serif";
 			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
+			
 			// Remove everything that is not just the city name from LocationName
 			var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
 				textXLocation = parseInt(root.eventData.LocationX) + 10,
 				textYLocation = parseInt(root.eventData.LocationY) + (fontSize/2),
 				textSize = root.context.measureText(locationName);
-
-				// rasterizeHTML.drawHTML('Some <h1>HTML</h1> ', document.getElementById('RFIDMap'));
 
 			if( textSize.width + textXLocation > root.context.canvas.width ) {
 				textXLocation -= textSize.width + 20;
@@ -193,10 +185,6 @@ var monthHead = [],
 			for(var i=0; i<otherMarkers.length; i++) {
 				var markerVerticalDistance = parseInt(root.eventData.LocationY) - parseInt(otherMarkers[i].eventData.LocationY),
 					markerHorizontalDistance = parseInt(root.eventData.LocationX) - parseInt(otherMarkers[i].eventData.LocationX);
-				
-				if(locationName == 'LOS ANGELES') {
-					// console.log(otherMarkers[i]);
-				}
 
 				if(Math.abs(markerVerticalDistance) < 20 && Math.abs(markerHorizontalDistance) < 50) {
 					textXLocation -= textSize.width + 20;
@@ -211,7 +199,6 @@ var monthHead = [],
 			}
 
 			root.context.fillText(locationName, textXLocation, textYLocation);
-
 			root.context.globalAlpha = 1;
 		};
 
@@ -241,9 +228,7 @@ var monthHead = [],
 
 	RFIDMap.prototype.draw = function() {
 		this.context.clearRect(0,0, this.WIDTH, this.HEIGHT);
-
 		this.context.drawImage(this.backgroundImage, 0,0);
-
 
 		for(var i=0; i<this.markers.length; i++) {
 			var marker = this.markers[i];
@@ -256,14 +241,6 @@ var monthHead = [],
 			}
 			
 		}
-
-		// this.context.fillStyle = '#CD1D27';
-		// this.context.font = "bold 10px 'HelveticaNeueW01-77BdCn 692722', HelveticaNeue, Helvetica, Arial, Verdana, sans-serif";
-		// this.context.fillText('ITN TOUCH TO DATE', 20, 240);
-		// this.context.fillStyle = '#768065';
-		// this.context.font = "bold 27px 'HelveticaNeueW01-77BdCn 692722', HelveticaNeue, Helvetica, Arial, Verdana, sans-serif";
-		// this.context.fillText('021,098,096', 20, 265);
-
 	};
 	
 	RFIDMap.prototype.changeMonth = function(month) {
@@ -277,15 +254,10 @@ var monthHead = [],
 
 	RFIDMap.prototype.loadData = function(month) {
 		var root = this,
-			// dataURL = 'itndata.xml';
 			// http://www.bcard.net/services/itninttools.asmx/FetchStats?
 			dataURL = 'serviceWrapper.php?service=months';
 			root.markers = [];
 			
-			// if(TESTSwitch) {
-			// 	dataURL = 'data2.xml';
-			// }
-
 		$.get(dataURL, function(data){
 			var loadedEvents = $.xml2json(data).EventCount;
 
@@ -293,10 +265,10 @@ var monthHead = [],
 				loadedEvents[i].Month = monthFromString(loadedEvents[i].StartDate);
 
 				root.markers.push( new RFIDMarker(loadedEvents[i], root.context) );
-
 			}
 		});
 
+		// Load "total touch points"
 		// http://www.bcard.net/services/itninttools.asmx/CurrentCount?
 		dataURL = 'serviceWrapper.php?service=totalTouchPoints';
 		$.get(dataURL, function(data){
@@ -332,11 +304,8 @@ var monthHead = [],
 					$(this).prev('li').addClass('adjacentSelectedMonth');
 					$(this).next('li').addClass('adjacentSelectedMonth');	
 				}
-				
 			}
 		});
-
-		
 	};
 
 
@@ -385,7 +354,6 @@ var monthHead = [],
 	// Re-Order the months so 'NOW' is at the end.
 	for(var i=(monthHead.length-1); i>=0; i--) {
 		$('#mapControls .months').prepend(monthHead[i]);
-		// monthOrderMap.unshift($(monthHead[i]).val() );
 	};
 
 	$('#mapControls .months li').each(function(i){
@@ -402,24 +370,10 @@ var monthHead = [],
 		$(this).next('li').addClass('adjacentSelectedMonth');
 		// $(this).prev('li').prev('li').addClass('farAdjacentSelectedMonth');
 		// $(this).next('li').next('li').addClass('farAdjacentSelectedMonth');
-		
-		// map.changeMonth($(this).val());
 
 		var positionLeft = $(this).position().left + 30 - $('#mapControls .scrollArea .scrollBar .scrollHandle').position().left;
 		$('#mapControls .scrollArea .scrollBar').animate( {left: positionLeft }, {duration: 500} );
-
-
-
 	});
-
-	$('#changeButton a').click(function(e) {
-		e.preventDefault();
-
-		TESTSwitch = !TESTSwitch;
-		console.log(TESTSwitch);
-		map.loadData();
-
-	})
 
 })(jQuery);
 
