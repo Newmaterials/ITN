@@ -77,19 +77,19 @@ var monthHead = [],
 				textXLocation -= textSize.width + 20;
 			}
 
-			// DOM DRAWING
-			// var textDiv = document.createElement("div"),
-			// 	locationText = document.createTextNode(locationName);;
-			// textDiv.appendChild(locationText);
+			// DOM DRAWING OPTION
+				// var textDiv = document.createElement("div"),
+				// 	locationText = document.createTextNode(locationName);;
+				// textDiv.appendChild(locationText);
 
-			// textDiv.setAttribute("class", "markerText");
-			// textDiv.setAttribute("style", "position: absolute; left: " + textXLocation + "px;top: " + textYLocation + "px");
+				// textDiv.setAttribute("class", "markerText");
+				// textDiv.setAttribute("style", "position: absolute; left: " + textXLocation + "px;top: " + textYLocation + "px");
 
-			// var mapDiv = document.getElementById('map');
-			// mapDiv.appendChild(textDiv);
-			
-			// $(textDiv).css({position: 'absolute', left: textXLocation, top: textYLocation});
-
+				// var mapDiv = document.getElementById('map');
+				// mapDiv.appendChild(textDiv);
+				
+				// $(textDiv).css({position: 'absolute', left: textXLocation, top: textYLocation});
+			// END DOM DRAWING
 			
 
 			// Check distance to other markers and move a bit if too close to others
@@ -109,8 +109,34 @@ var monthHead = [],
 			// 	}
 			// }
 
+			// Letter spacing hack
+			var letterSpacing = 1.5;
+		        
+	        var characters = String.split(locationName, ''),
+	            index = 0,
+	            current,
+	            currentPosition = textXLocation,
+	            align = 1;
+	        
+	        if (root.context.textAlign === 'right') {
+	            characters = characters.reverse();
+	            align = -1;
+	        } else if (root.context.textAlign === 'center') {
+	            var totalWidth = 0;
+	            for (var i = 0; i < characters.length; i++) {
+	                totalWidth += (root.context.measureText(characters[i]).width + letterSpacing);
+	            }
+	            currentPosition = textXLocation - (totalWidth / 2);
+	        }
+	        
+	        while (index < locationName.length) {
+	            current = characters[index++];
+	            root.context.fillText(current, currentPosition, textYLocation);
+	            currentPosition += (align * (root.context.measureText(current).width + letterSpacing));
+	        }
+
 			// Draw text
-			root.context.fillText(locationName, textXLocation, textYLocation);
+			// root.context.fillText(locationName, textXLocation, textYLocation);
 			root.context.globalAlpha = 1;
 		};
 
