@@ -97,10 +97,10 @@
 	top: 55px;
 	left: 0;
 	width: 1414px;
-	height: 4px;
+	height: 5px;
+	background-repeat: repeat-y;
 
 	background-image: url('../img/slider.svg');
-	background-repeat: no-repeat;
 }
 
 #mapControls .scrollArea .scrollBar {
@@ -112,10 +112,10 @@
 }
 #mapControls .scrollArea .scrollBar .scrollHandle {
 	position: absolute;
-	top: 0;
+	top: 2px;
 	left: 707px;
 
-	width: 4px;
+	width: 5px;
 	height: 30px;
 	background-color: #000;
 	-webkit-transition: all 0.3s ease;

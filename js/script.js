@@ -336,7 +336,7 @@ var monthHead = [],
 	RFIDMap.prototype.draw = function() {
 		this.context.clearRect(0,0, this.WIDTH, this.HEIGHT);
 		// Change opacity of map
-		this.context.globalAlpha = 0.3;
+		this.context.globalAlpha = 0.5;
 		this.context.drawImage(this.backgroundImage, 0,0);
 		this.context.globalAlpha = 1;
 
