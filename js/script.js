@@ -51,12 +51,68 @@ var monthHead = [],
 		var root = this;
 		
 		this.context = ctx;
-		this.maximumTotalPoints = 100000;
-		this.numBreakPoints = 10;
+		// this.maximumTotalPoints = 1000000;
+		this.maximumTotalPoints = 973913;
+		this.numBreakPoints = 9; // ignoring the first sprite which is used for zeroes
 		this.alphaVal = 0;
 		this.destroying = false;
 		this.canBeDestroyed = false;
 		this.monthOffset = 0;
+
+		this.drawMarkerText = function(fontSize) {
+
+			root.context.textAlign = 'left';
+			root.context.fillStyle = '#CD1D27'; 
+			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
+			
+			// Remove everything that is not just the city name from LocationName
+			var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
+				textXLocation = parseInt(root.eventData.LocationX) + 10,
+				textYLocation = parseInt(root.eventData.LocationY) + (fontSize/2),
+				textSize = root.context.measureText(locationName);
+
+
+			// If text is going off screen, move it to the left of marker
+			if( textSize.width + textXLocation > root.context.canvas.width ) {
+				textXLocation -= textSize.width + 20;
+			}
+
+			// DOM DRAWING
+			// var textDiv = document.createElement("div"),
+			// 	locationText = document.createTextNode(locationName);;
+			// textDiv.appendChild(locationText);
+
+			// textDiv.setAttribute("class", "markerText");
+			// textDiv.setAttribute("style", "position: absolute; left: " + textXLocation + "px;top: " + textYLocation + "px");
+
+			// var mapDiv = document.getElementById('map');
+			// mapDiv.appendChild(textDiv);
+			
+			// $(textDiv).css({position: 'absolute', left: textXLocation, top: textYLocation});
+
+			
+
+			// Check distance to other markers and move a bit if too close to others
+			// for(var i=0; i<otherMarkers.length; i++) {
+			// 	var markerVerticalDistance = parseInt(root.eventData.LocationY) - parseInt(otherMarkers[i].eventData.LocationY),
+			// 		markerHorizontalDistance = parseInt(root.eventData.LocationX) - parseInt(otherMarkers[i].eventData.LocationX);
+
+			// 	if(Math.abs(markerVerticalDistance) < 20 && Math.abs(markerHorizontalDistance) < 50) {
+			// 		textXLocation -= textSize.width + 20;
+
+			// 		if(markerVerticalDistance > 0) {
+			// 			textYLocation -= 10;
+			// 		}
+			// 		else {
+			// 			textYLocation += 10;
+			// 		}
+			// 	}
+			// }
+
+			// Draw text
+			root.context.fillText(locationName, textXLocation, textYLocation);
+			root.context.globalAlpha = 1;
+		};
 
 		// Private Methods
 		var getSpriteOffsetX = function(totalTouchPoints) {
@@ -134,6 +190,7 @@ var monthHead = [],
 			}
 			
 
+			// Draw text on marker
 			var fontSize = Math.floor( (root.eventData.TotalTouchPoints / root.maximumTotalPoints) * 3);
 			switch(fontSize) {
 				case 0:
@@ -168,38 +225,40 @@ var monthHead = [],
 					break;
 			};
 
-			root.context.textAlign = 'left';
-			root.context.fillStyle = '#CD1D27'; 
-			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
+			root.drawMarkerText(fontSize);
+
+			// root.context.textAlign = 'left';
+			// root.context.fillStyle = '#CD1D27'; 
+			// root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
 			
-			// Remove everything that is not just the city name from LocationName
-			var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
-				textXLocation = parseInt(root.eventData.LocationX) + 10,
-				textYLocation = parseInt(root.eventData.LocationY) + (fontSize/2),
-				textSize = root.context.measureText(locationName);
+			// // Remove everything that is not just the city name from LocationName
+			// var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
+			// 	textXLocation = parseInt(root.eventData.LocationX) + 10,
+			// 	textYLocation = parseInt(root.eventData.LocationY) + (fontSize/2),
+			// 	textSize = root.context.measureText(locationName);
 
-			if( textSize.width + textXLocation > root.context.canvas.width ) {
-				textXLocation -= textSize.width + 20;
-			}
+			// if( textSize.width + textXLocation > root.context.canvas.width ) {
+			// 	textXLocation -= textSize.width + 20;
+			// }
 
-			for(var i=0; i<otherMarkers.length; i++) {
-				var markerVerticalDistance = parseInt(root.eventData.LocationY) - parseInt(otherMarkers[i].eventData.LocationY),
-					markerHorizontalDistance = parseInt(root.eventData.LocationX) - parseInt(otherMarkers[i].eventData.LocationX);
+			// for(var i=0; i<otherMarkers.length; i++) {
+			// 	var markerVerticalDistance = parseInt(root.eventData.LocationY) - parseInt(otherMarkers[i].eventData.LocationY),
+			// 		markerHorizontalDistance = parseInt(root.eventData.LocationX) - parseInt(otherMarkers[i].eventData.LocationX);
 
-				if(Math.abs(markerVerticalDistance) < 20 && Math.abs(markerHorizontalDistance) < 50) {
-					textXLocation -= textSize.width + 20;
+			// 	if(Math.abs(markerVerticalDistance) < 20 && Math.abs(markerHorizontalDistance) < 50) {
+			// 		textXLocation -= textSize.width + 20;
 
-					if(markerVerticalDistance > 0) {
-						textYLocation -= 10;
-					}
-					else {
-						textYLocation += 10;
-					}
-				}
-			}
+			// 		if(markerVerticalDistance > 0) {
+			// 			textYLocation -= 10;
+			// 		}
+			// 		else {
+			// 			textYLocation += 10;
+			// 		}
+			// 	}
+			// }
 
-			root.context.fillText(locationName, textXLocation, textYLocation);
-			root.context.globalAlpha = 1;
+			// root.context.fillText(locationName, textXLocation, textYLocation);
+			// root.context.globalAlpha = 1;
 		};
 
 	};
