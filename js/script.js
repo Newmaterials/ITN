@@ -60,7 +60,7 @@ var monthHead = [],
 		this.monthOffset = 0;
 
 		this.drawMarkerText = function(fontSize) {
-
+			var letterSpacing = 1.5;
 			root.context.textAlign = 'left';
 			root.context.fillStyle = '#CD1D27'; 
 			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
@@ -110,24 +110,25 @@ var monthHead = [],
 			// }
 
 			// Letter spacing hack
-			var letterSpacing = 1.5;
-		        
+			    
 	        var characters = String.split(locationName, ''),
 	            index = 0,
 	            current,
 	            currentPosition = textXLocation,
 	            align = 1;
 	        
-	        if (root.context.textAlign === 'right') {
-	            characters = characters.reverse();
-	            align = -1;
-	        } else if (root.context.textAlign === 'center') {
-	            var totalWidth = 0;
-	            for (var i = 0; i < characters.length; i++) {
-	                totalWidth += (root.context.measureText(characters[i]).width + letterSpacing);
-	            }
-	            currentPosition = textXLocation - (totalWidth / 2);
-	        }
+	        // if (root.context.textAlign === 'right') {
+	        //     characters = characters.reverse();
+	        //     align = -1;
+	        // } else if (root.context.textAlign === 'center') {
+            var totalWidth = 0;
+
+            for (var i = 0; i < characters.length; i++) {
+                totalWidth += (root.context.measureText(characters[i]).width + letterSpacing);
+            }
+            
+            currentPosition = textXLocation - (totalWidth / 2);
+	        // }
 	        
 	        while (index < locationName.length) {
 	            current = characters[index++];
