@@ -149,12 +149,33 @@ var monthHead = [],
 			// Creating breakpoints for offsets based on maximum amount and number of breakpoints. 
 			// Scale the numPoints to 1, multiply up to amount of breakpoints, then round down to get breakpoint integer. 
 			// Now multiply by the number of pixels in each sprite to create proper offset amount.
-			var offsetSize = Math.floor( (numTouchPoints / root.maximumTotalPoints) * root.numBreakPoints) * imageWidth;
+			// var offsetSize = Math.floor( (numTouchPoints / root.maximumTotalPoints) * root.numBreakPoints) * imageWidth;
 
-			// var offsetSize = 0;
-			// if(numTouchPoints >= )
+			var offsetSize = 0;
+			if(numTouchPoints >= 800000) {
+				offsetSize = 6;
+			} 
+			else if(numTouchPoints >= 400000 && numTouchPoints < 600000) {
+				offsetSize = 5;
+			} 
+			else if(numTouchPoints >= 200000 && numTouchPoints < 400000) {
+				offsetSize = 4;
+			} 
+			else if(numTouchPoints >= 100000 && numTouchPoints < 200000) {
+				offsetSize = 3;
+			} 
+			else if(numTouchPoints >= 50000 && numTouchPoints < 100000) {
+				offsetSize = 2;
+			} 
+			else if(numTouchPoints >= 20000 && numTouchPoints < 50000) {
+				offsetSize = 1;
+			} 
+			else {
+				offsetSize = 0;	
+			}
 
-			offsetSize += (imageWidth * 1);
+			offsetSize *= imageWidth;
+			// offsetSize += (imageWidth * 1);
 			// First image on the spritesheet is for special use
 			return offsetSize;
 		};
@@ -172,6 +193,10 @@ var monthHead = [],
 		this.spriteOffsetX = getSpriteOffsetX(root.eventData.TotalTouchPoints);
 		this.spriteOffsetY = 0;
 
+		// if(root.eventData.LocationName == 'Kissimmee, FL USA') {
+		// 	console.log(this.spriteOffsetX);	
+		// }
+		
 		// Public Methods
 		this.animationStep = function() {
 			this.spriteOffsetY = getSpriteOffsetY(root.currentAnimationStep);
@@ -224,39 +249,63 @@ var monthHead = [],
 			
 
 			// Draw text on marker
-			var fontSize = Math.floor( (root.eventData.TotalTouchPoints / root.maximumTotalPoints) * 3);
-			switch(fontSize) {
-				case 0:
-					fontSize = 12;
-					break;
-				case 1:
-					fontSize = 15;
-					break;
-				case 2:
-					fontSize = 17;
-					break;
-				case 3:
-					fontSize = 20;
-					break;
-				case 4:
-					fontSize = 22;
-					break;
-				case 5:
-					fontSize = 25;
-					break;
-				case 6:
-					fontSize = 27;
-					break;
-				case 7:
-					fontSize = 30;
-					break;
-				case 8:
-					fontSize = 32;
-					break;
-				case 9:
-					fontSize = 37;
-					break;
-			};
+			// var fontSize = Math.floor( (root.eventData.TotalTouchPoints / root.maximumTotalPoints) * 3);
+			var fontSize = 11;
+			// switch(fontSize) {
+			// 	case 0:
+			// 		fontSize = 12;
+			// 		break;
+			// 	case 1:
+			// 		fontSize = 15;
+			// 		break;
+			// 	case 2:
+			// 		fontSize = 17;
+			// 		break;
+			// 	case 3:
+			// 		fontSize = 20;
+			// 		break;
+			// 	case 4:
+			// 		fontSize = 22;
+			// 		break;
+			// 	case 5:
+			// 		fontSize = 25;
+			// 		break;
+			// 	case 6:
+			// 		fontSize = 27;
+			// 		break;
+			// 	case 7:
+			// 		fontSize = 30;
+			// 		break;
+			// 	case 8:
+			// 		fontSize = 32;
+			// 		break;
+			// 	case 9:
+			// 		fontSize = 37;
+			// 		break;
+			// };
+
+
+			if(root.eventData.TotalTouchPoints >= 800000) {
+				fontSize = 28;
+			} 
+			else if(root.eventData.TotalTouchPoints >= 400000 && root.eventData.TotalTouchPoints < 600000) {
+				fontSize = 24;
+			} 
+			else if(root.eventData.TotalTouchPoints >= 200000 && root.eventData.TotalTouchPoints < 400000) {
+				fontSize = 18;
+			} 
+			else if(root.eventData.TotalTouchPoints >= 100000 && root.eventData.TotalTouchPoints < 200000) {
+				fontSize = 16;
+			} 
+			else if(root.eventData.TotalTouchPoints >= 50000 && root.eventData.TotalTouchPoints < 100000) {
+				fontSize = 14;
+			} 
+			else if(root.eventData.TotalTouchPoints >= 20000 && root.eventData.TotalTouchPoints < 50000) {
+				fontSize = 14;
+			} 
+			else {
+				fontSize = 11;	
+			}
 
 			root.drawMarkerText(fontSize);
 		};
@@ -286,7 +335,10 @@ var monthHead = [],
 
 	RFIDMap.prototype.draw = function() {
 		this.context.clearRect(0,0, this.WIDTH, this.HEIGHT);
+		// Change opacity of map
+		this.context.globalAlpha = 0.3;
 		this.context.drawImage(this.backgroundImage, 0,0);
+		this.context.globalAlpha = 1;
 
 		for(var i=0; i<this.markers.length; i++) {
 			var marker = this.markers[i];
@@ -383,7 +435,7 @@ var monthHead = [],
 	currentScrollPos = getScrollPos();
 	
 	// Display of months in the control area
-	var currentMonth = new Date().getMonth() - 2;
+	var currentMonth = new Date().getMonth();
 
 	$('#mapControls .months li').each(function(i){	
 		var thisVal = $(this).val();
