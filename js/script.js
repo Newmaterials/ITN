@@ -34,10 +34,12 @@ var monthHead = [],
 	var image = new Image(),
 	imageWidth = 128,
 	imageHeight = 128,
-	backgroundImageSrc = 'img/map.svg';
+	backgroundImageSrc = 'img/map.svg',
+	currentScrollPos = 0;
 
 	image.crossOrigin = ''; 
 	image.src = 'img/marker.svg';
+
 
 
 	var monthFromString = function(s) {
@@ -49,11 +51,15 @@ var monthHead = [],
 	// Marker class
 	var RFIDMarker = function(eventToLoad, ctx) {
 		var root = this;
-		
 		this.context = ctx;
+		
+		
+		//// OPTIONS ////
 		// this.maximumTotalPoints = 1000000;
-		this.maximumTotalPoints = 973913;
-		this.numBreakPoints = 9; // ignoring the first sprite which is used for zeroes
+		this.maximumTotalPoints = 973913; // Defines the range of possible values
+		this.numBreakPoints = 9; // Defines number of sprites in marker spritesheet (ignoring the first sprite which is used for zeroes)
+		
+
 		this.alphaVal = 0;
 		this.destroying = false;
 		this.canBeDestroyed = false;
@@ -171,7 +177,8 @@ var monthHead = [],
 			var fadeSpeed = 0.1;
 			var offsetLocation = (monthOrderMap[root.eventData.Month-1]) * 60 + 31;
 			var offsetRange = 50;
-			var currentOffset = $('#mapControls .scrollArea .scrollBar').position().left + $('#mapControls .scrollArea .scrollBar .scrollHandle').position().left;
+			// var currentOffset = $('#mapControls .scrollArea .scrollBar').position().left + scrollHandleOffset;
+			var currentOffset = currentScrollPos;
 
 			// SCALING FROM -1 to 1
 			var alpha = ((currentOffset - (offsetLocation - offsetRange) ) / (offsetRange*2)) * 2 - 1;
@@ -247,9 +254,7 @@ var monthHead = [],
 			};
 
 			root.drawMarkerText(fontSize);
-
 		};
-
 	};
 
 
@@ -326,6 +331,9 @@ var monthHead = [],
 		});
 	};
 
+
+
+
 	var map = new RFIDMap();
 
 	// MAIN ANIMATION LOOP
@@ -335,10 +343,20 @@ var monthHead = [],
 	})();
 
 
+
+
+
 	// CONTROLS
+	var scrollHandleOffset = $('#mapControls .scrollArea .scrollBar .scrollHandle').position().left;
 	
+	var getScrollPos = function() {
+		return $('#mapControls .scrollArea .scrollBar').position().left + scrollHandleOffset;
+	};
+
+	////// Setup of control display //////
+
 	var changeMonthDisplay = function(positionLeft){
-		var scrollPositionLeft = positionLeft + $('#mapControls .scrollArea .scrollBar .scrollHandle').position().left;
+		var scrollPositionLeft = positionLeft + scrollHandleOffset;
 
 		// Add selected month class (and adjacent months) dependent on the location of the scrollbar
 		$.each($('#mapControls .months li'), function(i,month) {
@@ -355,23 +373,10 @@ var monthHead = [],
 			}
 		});
 	};
-
-
-	$( "#mapControls .scrollArea .scrollBar" ).draggable({ 
-		axis: "x", 
-		cursor: "move",
-		drag: function( event, ui ) {
-			if(ui.position.left < -$('#mapControls .scrollArea .scrollBar .scrollHandle').position().left + 30) {
-				ui.position.left = -$('#mapControls .scrollArea .scrollBar .scrollHandle').position().left + 30;
-			}
-			else if(ui.position.left > -17) {
-				ui.position.left = -17;
-			}
-
-			changeMonthDisplay(ui.position.left);
-		} });
 	
-
+	// Set initial scroll position variable (to avoid computing it on every frame)
+	currentScrollPos = getScrollPos();
+	
 	// Display of months in the control area
 	var currentMonth = new Date().getMonth();
 
@@ -382,7 +387,6 @@ var monthHead = [],
 			$(this).text('NOW');
 			$(this).addClass('selectedMonth');
 			$('#mapControls .months').append('<p class="currentYear">' + new Date().getFullYear() + '</p>');
-
 		} 
 		else if(thisVal == currentMonth+2 || thisVal == currentMonth) {
 			$(this).addClass('adjacentSelectedMonth');
@@ -404,13 +408,33 @@ var monthHead = [],
 		$('#mapControls .months').prepend(monthHead[i]);
 	};
 
+	// Keep a map of which months are where on the controls. This is used in the RFIDMap class 
+	// to determine what month should be showing when you scroll across the months
 	$('#mapControls .months li').each(function(i){
 		monthOrderMap[$(this).val()-1] = i;
 	});
 
 	// Position the previous year near the crossing AFTER it has been put in place (meaning, what happens above these lines)
 	$('#mapControls .months .prevYear').css({left: $('.endYear').position().left + 50});
-	console.log('posiiton: ', $('.endYear').position().left);
+
+
+	////// Event handlers //////
+
+	$( "#mapControls .scrollArea .scrollBar" ).draggable({ 
+		axis: "x", 
+		cursor: "move",
+		drag: function( event, ui ) {
+			if(ui.position.left < -scrollHandleOffset + 30) {
+				ui.position.left = -scrollHandleOffset + 30;
+			}
+			else if(ui.position.left > -17) {
+				ui.position.left = -17;
+			}
+
+			currentScrollPos = getScrollPos();
+			changeMonthDisplay(ui.position.left);
+		} 
+	});
 
 	$('#mapControls .months li').click(function(){
 		$('#mapControls .months li').removeClass('selectedMonth');
@@ -421,8 +445,11 @@ var monthHead = [],
 		$(this).prev('li').addClass('adjacentSelectedMonth');
 		$(this).next('li').addClass('adjacentSelectedMonth');
 
-		var positionLeft = $(this).position().left + 30 - $('#mapControls .scrollArea .scrollBar .scrollHandle').position().left;
-		$('#mapControls .scrollArea .scrollBar').animate( {left: positionLeft }, {duration: 500} );
+		var positionLeft = $(this).position().left + 30 - scrollHandleOffset;
+		$('#mapControls .scrollArea .scrollBar').animate( {left: positionLeft }, {
+			duration: 500,
+			step: function(step) {currentScrollPos=step + scrollHandleOffset;}
+		} );
 	});
 
 })(jQuery);
