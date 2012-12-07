@@ -53,7 +53,7 @@ var monthHead = [],
 		var root = this;
 		this.context = ctx;
 		
-		
+
 		//// OPTIONS ////
 		// this.maximumTotalPoints = 1000000;
 		this.maximumTotalPoints = 973913; // Defines the range of possible values
@@ -66,14 +66,14 @@ var monthHead = [],
 		this.monthOffset = 0;
 
 		this.drawMarkerText = function(fontSize) {
-			var letterSpacing = 1.5;
+			var letterSpacing = 1.25;
 			root.context.textAlign = 'left';
 			root.context.fillStyle = '#CD1D27'; 
 			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
 			
 			// Remove everything that is not just the city name from LocationName
 			var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
-				textXLocation = parseInt(root.eventData.LocationX) + 10,
+				textXLocation = parseInt(root.eventData.LocationX) + imageWidth / 3,
 				textYLocation = parseInt(root.eventData.LocationY) + (fontSize/2),
 				textSize = root.context.measureText(locationName);
 
@@ -116,7 +116,8 @@ var monthHead = [],
 			// }
 
 			// Letter spacing hack
-	        var characters = String.split(locationName, ''),
+			// String.split(locationName, ''),
+	        var characters = locationName.split(''),
 	            index = 0,
 	            current,
 	            currentPosition = textXLocation,
@@ -149,6 +150,10 @@ var monthHead = [],
 			// Scale the numPoints to 1, multiply up to amount of breakpoints, then round down to get breakpoint integer. 
 			// Now multiply by the number of pixels in each sprite to create proper offset amount.
 			var offsetSize = Math.floor( (numTouchPoints / root.maximumTotalPoints) * root.numBreakPoints) * imageWidth;
+
+			// var offsetSize = 0;
+			// if(numTouchPoints >= )
+
 			offsetSize += (imageWidth * 1);
 			// First image on the spritesheet is for special use
 			return offsetSize;
@@ -378,7 +383,7 @@ var monthHead = [],
 	currentScrollPos = getScrollPos();
 	
 	// Display of months in the control area
-	var currentMonth = new Date().getMonth();
+	var currentMonth = new Date().getMonth() - 2;
 
 	$('#mapControls .months li').each(function(i){	
 		var thisVal = $(this).val();
