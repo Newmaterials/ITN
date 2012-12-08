@@ -155,7 +155,6 @@ var monthHead = [],
 			// 	}
 			// }
 
-			root.context.clearShadow();
 			// Letter spacing hack
 			// String.split(locationName, ''),
 			if(root.context.globalAlpha > 0) {
