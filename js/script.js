@@ -46,7 +46,13 @@ var monthHead = [],
 	  var bits = s.split(/[-T:]/g);
 
 	  return bits[1];
-	}
+	};
+
+	var dayFromString = function(s) {
+	  var bits = s.split(/[-T:]/g);
+
+	  return bits[2];
+	};
 
 	// Marker class
 	var RFIDMarker = function(eventToLoad, ctx) {
@@ -192,10 +198,6 @@ var monthHead = [],
 		this.currentAnimationStep = 0;
 		this.spriteOffsetX = getSpriteOffsetX(root.eventData.TotalTouchPoints);
 		this.spriteOffsetY = 0;
-
-		// if(root.eventData.LocationName == 'Kissimmee, FL USA') {
-		// 	console.log(this.spriteOffsetX);	
-		// }
 		
 		// Public Methods
 		this.animationStep = function() {
@@ -205,18 +207,32 @@ var monthHead = [],
 		
 		this.getAlphaVal = function() {
 			var fadeSpeed = 0.1;
-			var offsetLocation = (monthOrderMap[root.eventData.Month-1]) * 60 + 31;
-			var offsetRange = 50;
-			// var currentOffset = $('#mapControls .scrollArea .scrollBar').position().left + scrollHandleOffset;
+			var leftMargin = 31;
+			var widthOfMonthLabels = 60;
+			var widthOfDayLabels = widthOfMonthLabels/4;
+			var offsetRange = 50/4;
 			var currentOffset = currentScrollPos;
+			var weekOfMonth = Math.floor(root.eventData.Day / 8); // We use "32 / 4 = 8" to get weeks (32 since we use Math.floor)
 
+			// Gives us our starting point
+			var offsetLocation = ((monthOrderMap[root.eventData.Month-1]) * (widthOfMonthLabels) );
+			
+			weekOfMonth = weekOfMonth >0 ? weekOfMonth/4 : weekOfMonth; // convert to percentage
+
+			offsetLocation += (widthOfMonthLabels * weekOfMonth);
+			offsetLocation += leftMargin;
+
+			// SCALING FROM 0 to 1
+			var alpha = ((currentOffset - (offsetLocation - offsetRange) ) / (offsetRange*2));
+			
 			// SCALING FROM -1 to 1
-			var alpha = ((currentOffset - (offsetLocation - offsetRange) ) / (offsetRange*2)) * 2 - 1;
+			alpha = alpha * 2 - 1;
 			
 			// LIMITS ARE -1 to 1
 			if(alpha > 1) {
 				alpha = 1;
-			} else if(alpha < -1) {
+			} 
+			else if(alpha < -1) {
 				alpha = -1;
 			}
 
@@ -373,7 +389,8 @@ var monthHead = [],
 
 			for(var i=0; i<loadedEvents.length; i++) {
 				loadedEvents[i].Month = monthFromString(loadedEvents[i].StartDate);
-
+				loadedEvents[i].Day = dayFromString(loadedEvents[i].StartDate);
+				console.log( loadedEvents[i].Month + ", " + loadedEvents[i].Day + ": " + loadedEvents[i].LocationName );
 				root.markers.push( new RFIDMarker(loadedEvents[i], root.context) );
 			}
 		});
