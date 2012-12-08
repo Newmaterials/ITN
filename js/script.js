@@ -342,25 +342,25 @@ var monthHead = [],
 
 
 			if(root.eventData.TotalTouchPoints >= 800000) {
-				fontSize = 29;
+				fontSize = 28;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 400000 && root.eventData.TotalTouchPoints < 600000) {
-				fontSize = 25;
+				fontSize = 24;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 200000 && root.eventData.TotalTouchPoints < 400000) {
-				fontSize = 19;
+				fontSize = 18;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 100000 && root.eventData.TotalTouchPoints < 200000) {
-				fontSize = 17;
+				fontSize = 16;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 50000 && root.eventData.TotalTouchPoints < 100000) {
-				fontSize = 15;
+				fontSize = 14;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 20000 && root.eventData.TotalTouchPoints < 50000) {
-				fontSize = 15;
+				fontSize = 14;
 			} 
 			else {
-				fontSize = 12;	
+				fontSize = 11;	
 			}
 
 			root.drawMarkerText(fontSize);
