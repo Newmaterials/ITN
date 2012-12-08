@@ -32,13 +32,17 @@ var monthHead = [],
 
 (function($) {
 	var image = new Image(),
+	currentFrame = 0,
+	frameDivider = 3,
 	imageWidth = 128,
 	imageHeight = 128,
-	backgroundImageSrc = 'img/map.svg',
+	// backgroundImageSrc = 'img/map.svg',
+	backgroundImageSrc = 'img/map.png',
 	currentScrollPos = 0;
 
 	image.crossOrigin = ''; 
-	image.src = 'img/marker.svg';
+	// image.src = 'img/marker.svg';
+	image.src = 'img/marker.png';
 
 
 
@@ -75,33 +79,63 @@ var monthHead = [],
 			var letterSpacing = .5;
 			root.context.textAlign = 'left';
 			root.context.fillStyle = '#CD1D27'; 
+			// root.context.font = ""+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
 			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
 			
 			// Remove everything that is not just the city name from LocationName
 			var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
-				textXLocation = parseInt(root.eventData.LocationX) + imageWidth / 3,
-				textYLocation = parseInt(root.eventData.LocationY) + (fontSize/2),
+				textXLocation = parseInt(root.eventData.LocationX) + 10,
+				textYLocation = parseInt(root.eventData.LocationY) - (fontSize/4),
 				textSize = root.context.measureText(locationName);
 
 
+			var displayLeft = false;
+			var citiesToDisplayLeft = [
+						'Anaheim',
+						'Bellevue',
+						'Burlingame',
+						'Carlsbad',
+						'Garden Grove',
+						'La Quinta',
+						'Long Beach',
+						'Los Angeles',
+						'Palm Desert',
+						'San Diego',
+						'San Francisco',
+						'San Jose',
+						'Santa Clara',
+						'Seattle'
+					];
+
+				for(var i=0; i<citiesToDisplayLeft.length; i++) {
+					if(locationName == citiesToDisplayLeft[i].toUpperCase()) {
+						displayLeft = true;
+					}
+				}
+
 			// If text is going off screen, move it to the left of marker
-			if( textSize.width + textXLocation > root.context.canvas.width ) {
+			if( textSize.width + textXLocation > root.context.canvas.width || displayLeft) {
 				textXLocation -= textSize.width + 20;
 			}
 
 			// DOM DRAWING OPTION
-				// var textDiv = document.createElement("div"),
-				// 	locationText = document.createTextNode(locationName);;
-				// textDiv.appendChild(locationText);
-
-				// textDiv.setAttribute("class", "markerText");
-				// textDiv.setAttribute("style", "position: absolute; left: " + textXLocation + "px;top: " + textYLocation + "px");
-
-				// var mapDiv = document.getElementById('map');
-				// mapDiv.appendChild(textDiv);
 				
-				// $(textDiv).css({position: 'absolute', left: textXLocation, top: textYLocation});
-			// END DOM DRAWING
+					// var textDiv = document.createElement("div"),
+					// locationText = document.createTextNode(locationName);;
+					// textDiv.appendChild(locationText);
+
+					// textDiv.setAttribute("class", "markerText");
+					// textDiv.setAttribute("style", "position: absolute; left: " + textXLocation + "px;top: " + textYLocation + "px");
+
+					// var mapDiv = document.getElementById('map');
+					// mapDiv.appendChild(textDiv);
+					
+					// $(textDiv).css({position: 'absolute', left: textXLocation, top: textYLocation});	
+				// END DOM DRAWING
+					
+				
+				
+			
 			
 
 			// Check distance to other markers and move a bit if too close to others
@@ -121,28 +155,33 @@ var monthHead = [],
 			// 	}
 			// }
 
+			root.context.clearShadow();
 			// Letter spacing hack
 			// String.split(locationName, ''),
-	        var characters = locationName.split(''),
-	            index = 0,
-	            current,
-	            currentPosition = textXLocation,
-	            align = 1;
-	        
-            var totalWidth = 0;
+			if(root.context.globalAlpha > 0) {
+		        var characters = locationName.split(''),
+		            index = 0,
+		            current,
+		            currentPosition = textXLocation,
+		            align = 1;
+		        
+	            var totalWidth = 0;
 
-            for (var i = 0; i < characters.length; i++) {
-                totalWidth += (root.context.measureText(characters[i]).width + letterSpacing);
-            }
-            
-            currentPosition = textXLocation - (totalWidth / 2);
-	        
-	        while (index < locationName.length) {
-	            current = characters[index++];
-	            root.context.fillText(current, currentPosition, textYLocation);
-	            currentPosition += (align * (root.context.measureText(current).width + letterSpacing));
+	            for (var i = 0; i < characters.length; i++) {
+	                totalWidth += (root.context.measureText(characters[i]).width + letterSpacing);
+	            }
+	            
+	            currentPosition = textXLocation;
+	             // - (totalWidth / 2);
+		        
+		        while (index < locationName.length) {
+		            current = characters[index++];
+		            root.context.fillText(current, currentPosition, textYLocation);
+		            currentPosition += (align * (root.context.measureText(current).width + letterSpacing));
+		        }
+
 	        }
-
+			
 			// Draw text
 			// root.context.fillText(locationName, textXLocation, textYLocation);
 			root.context.globalAlpha = 1;
@@ -244,6 +283,7 @@ var monthHead = [],
 		
 		this.draw = function(otherMarkers) {
 			root.context.globalAlpha = root.getAlphaVal();
+			// root.context.setAlpha(root.getAlphaVal());
 			
 			if(root.context.globalAlpha == 0 && root.destroying) {
 				root.canBeDestroyed = true;
@@ -302,25 +342,25 @@ var monthHead = [],
 
 
 			if(root.eventData.TotalTouchPoints >= 800000) {
-				fontSize = 28;
+				fontSize = 29;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 400000 && root.eventData.TotalTouchPoints < 600000) {
-				fontSize = 24;
+				fontSize = 25;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 200000 && root.eventData.TotalTouchPoints < 400000) {
-				fontSize = 18;
+				fontSize = 19;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 100000 && root.eventData.TotalTouchPoints < 200000) {
-				fontSize = 16;
+				fontSize = 17;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 50000 && root.eventData.TotalTouchPoints < 100000) {
-				fontSize = 14;
+				fontSize = 15;
 			} 
 			else if(root.eventData.TotalTouchPoints >= 20000 && root.eventData.TotalTouchPoints < 50000) {
-				fontSize = 14;
+				fontSize = 15;
 			} 
 			else {
-				fontSize = 11;	
+				fontSize = 12;	
 			}
 
 			root.drawMarkerText(fontSize);
@@ -351,6 +391,7 @@ var monthHead = [],
 
 	RFIDMap.prototype.draw = function() {
 		this.context.clearRect(0,0, this.WIDTH, this.HEIGHT);
+		
 		// Change opacity of map
 		this.context.globalAlpha = 0.5;
 		this.context.drawImage(this.backgroundImage, 0,0);
@@ -413,7 +454,11 @@ var monthHead = [],
 	// MAIN ANIMATION LOOP
 	(function animloop(){
 		window.requestAnimationFrame(animloop);
-		map.draw();
+		if(currentFrame % frameDivider == 0) {
+			map.draw();	
+		}
+		
+		currentFrame++;
 	})();
 
 
