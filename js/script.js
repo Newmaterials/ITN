@@ -81,7 +81,13 @@ var monthHead = [],
 			root.context.fillStyle = '#CD1D27'; 
 			// root.context.font = ""+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
 			root.context.font = "bold "+ fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";
-			
+
+			if(navigator.userAgent.search("AppleWebKit") >= 0) {
+				// console.log('AppleWebkit');
+				// for Safari
+				root.context.canvas.style.webkitFontSmoothing = "antialiased";
+		    	root.context.font = fontSize +"px 'bebas-neue', Helvetica, Arial, Verdana, sans-serif";        	
+		    }
 			// Remove everything that is not just the city name from LocationName
 			var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
 				textXLocation = parseInt(root.eventData.LocationX) + 8,
@@ -172,10 +178,13 @@ var monthHead = [],
 	            
 	            currentPosition = textXLocation;
 	             // - (totalWidth / 2);
+		        var priorFillStyle = root.context.fillStyle;
 		        
 		        while (index < locationName.length) {
 		            current = characters[index++];
+		            
 		            root.context.fillText(current, currentPosition, textYLocation);
+
 		            currentPosition += (align * (root.context.measureText(current).width + letterSpacing));
 		        }
 
@@ -384,8 +393,8 @@ var monthHead = [],
 		this.backgroundImage = new Image();
 		this.backgroundImage.src = backgroundImageSrc;
 
-		// for Safari
-		this.canvas.style.webkitFontSmoothing = "antialiased";
+		
+		// this.canvas.style.webkitFontSmoothing = "none";
 
 		// Immediately load in data from the server
 		this.loadData(new Date().getMonth());
