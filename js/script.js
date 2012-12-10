@@ -84,8 +84,8 @@ var monthHead = [],
 			
 			// Remove everything that is not just the city name from LocationName
 			var locationName = root.eventData.LocationName.split(',')[0].toUpperCase(),
-				textXLocation = parseInt(root.eventData.LocationX) + 10,
-				textYLocation = parseInt(root.eventData.LocationY) - (fontSize/4),
+				textXLocation = parseInt(root.eventData.LocationX) + 8,
+				textYLocation = parseInt(root.eventData.LocationY) - (fontSize/4) + 1,
 				textSize = root.context.measureText(locationName);
 
 
