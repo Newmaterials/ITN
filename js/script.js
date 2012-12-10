@@ -384,6 +384,9 @@ var monthHead = [],
 		this.backgroundImage = new Image();
 		this.backgroundImage.src = backgroundImageSrc;
 
+		// for Safari
+		this.canvas.style.webkitFontSmoothing = "antialiased";
+
 		// Immediately load in data from the server
 		this.loadData(new Date().getMonth());
 	};
