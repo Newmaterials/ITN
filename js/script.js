@@ -111,7 +111,8 @@ var monthHead = [],
 						'San Jose',
 						'Santa Clara',
 						'Seattle',
-						'Zapopan'
+						'Zapopan',
+						'Pudong New Area Shanghai'
 					];
 
 				for(var i=0; i<citiesToDisplayLeft.length; i++) {
