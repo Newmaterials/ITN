@@ -110,8 +110,7 @@ var monthHead = [],
 						'San Francisco',
 						'San Jose',
 						'Santa Clara',
-						'Seattle',
-						'Zapopan'
+						'Seattle'
 					];
 
 				for(var i=0; i<citiesToDisplayLeft.length; i++) {
@@ -206,22 +205,22 @@ var monthHead = [],
 			// var offsetSize = Math.floor( (numTouchPoints / root.maximumTotalPoints) * root.numBreakPoints) * imageWidth;
 
 			var offsetSize = 0;
-			if(numTouchPoints >= 100000) {
+			if(numTouchPoints >= 800000) {
 				offsetSize = 6;
 			} 
-			else if(numTouchPoints >= 80000 && numTouchPoints < 100000) {
+			else if(numTouchPoints >= 400000 && numTouchPoints < 600000) {
 				offsetSize = 5;
 			} 
-			else if(numTouchPoints >= 60000 && numTouchPoints < 80000) {
+			else if(numTouchPoints >= 200000 && numTouchPoints < 400000) {
 				offsetSize = 4;
 			} 
-			else if(numTouchPoints >= 20000 && numTouchPoints < 60000) {
+			else if(numTouchPoints >= 100000 && numTouchPoints < 200000) {
 				offsetSize = 3;
 			} 
-			else if(numTouchPoints >= 10000 && numTouchPoints < 20000) {
+			else if(numTouchPoints >= 50000 && numTouchPoints < 100000) {
 				offsetSize = 2;
 			} 
-			else if(numTouchPoints >= 500 && numTouchPoints < 10000) {
+			else if(numTouchPoints >= 20000 && numTouchPoints < 50000) {
 				offsetSize = 1;
 			} 
 			else {
@@ -350,26 +349,26 @@ var monthHead = [],
 			// };
 
 
-			if(root.eventData.TotalTouchPoints >= 100000) {
+			if(root.eventData.TotalTouchPoints >= 800000) {
 				fontSize = 28;
 			} 
-			else if(root.eventData.TotalTouchPoints >= 80000 && root.eventData.TotalTouchPoints < 100000) {
+			else if(root.eventData.TotalTouchPoints >= 400000 && root.eventData.TotalTouchPoints < 600000) {
 				fontSize = 24;
 			} 
-			else if(root.eventData.TotalTouchPoints >= 60000 && root.eventData.TotalTouchPoints < 80000) {
-				fontSize = 21;
-			} 
-			else if(root.eventData.TotalTouchPoints >= 20000 && root.eventData.TotalTouchPoints < 60000) {
+			else if(root.eventData.TotalTouchPoints >= 200000 && root.eventData.TotalTouchPoints < 400000) {
 				fontSize = 18;
 			} 
-			else if(root.eventData.TotalTouchPoints >= 10000 && root.eventData.TotalTouchPoints < 20000) {
+			else if(root.eventData.TotalTouchPoints >= 100000 && root.eventData.TotalTouchPoints < 200000) {
 				fontSize = 16;
 			} 
-			else if(root.eventData.TotalTouchPoints >= 500 && root.eventData.TotalTouchPoints < 10000) {
-				fontSize = 16;
+			else if(root.eventData.TotalTouchPoints >= 50000 && root.eventData.TotalTouchPoints < 100000) {
+				fontSize = 14;
+			} 
+			else if(root.eventData.TotalTouchPoints >= 20000 && root.eventData.TotalTouchPoints < 50000) {
+				fontSize = 14;
 			} 
 			else {
-				fontSize = 13;	
+				fontSize = 11;	
 			}
 
 			root.drawMarkerText(fontSize);
